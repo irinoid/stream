@@ -9,12 +9,11 @@ import java.util.stream.Stream;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final Map<String, Employee> empMap = new HashMap<>();
+    private final Map<String, Employee> empMap;
 
-    //void generateEmployeeMap();
+    public EmployeeServiceImpl() {
+        this.empMap = new HashMap<>();
 
-    @Override
-    public void generateEmployeeMap() {
         empMap.put("Иван Иванов", new Employee("Иванов", "Иван", 1, 100_000));
         empMap.put("Петр Петров", new Employee("Петров", "Петр", 2, 50_000));
         empMap.put("Василий Васильев", new Employee("Иванов", "Иван", 3, 7_000));
@@ -37,20 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Optional<Employee> getMaxSalary(int departmentId) {
         final Employee maxSalEmp;
-        //Optional<Integer> maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).map(Employee::getSalary).max(Comparator.naturalOrder());
-        //Employee maxSalEmpl = empMap.values().stream().filter(e -> e.getSalary() == maxSal);
         Optional<Employee> maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).max(Comparator.comparingInt(e -> e.getSalary()));
-
         return maxSal;
-
-
-        //Integer maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).map(Employee::getSalary).max(Comparator.naturalOrder());
-        //int maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).map(e -> e.getSalary()).max(Comparator.naturalOrder());
-        //Optional<Integer> maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).reduce(Integer.MIN_VALUE, Integer::max);
-        //int maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).max((s1, s2) -> Integer.compare(s1.getSalary(), s2.getSalary()));
-
-        // int maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).max(n -> n.getSalary()).get();
-
     }
 
     @Override
@@ -58,8 +45,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Integer> minSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).map(Employee::getSalary).min(Comparator.naturalOrder());
         return minSal;
     }
+
     @Override
-    public List<Employee> printDepartmentEmployee(int departmentId){
+    public List<Employee> printDepartmentEmployee(int departmentId) {
         List<Employee> all = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).collect(Collectors.toList());
         return all;
     }
