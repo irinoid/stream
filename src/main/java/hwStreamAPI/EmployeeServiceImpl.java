@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Set;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -33,24 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         return empMap.get(lastName + " " + firstName);
     }
 
-    @Override
-    public Optional<Employee> getMaxSalary(int departmentId) {
-        final Employee maxSalEmp;
-        Optional<Employee> maxSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).max(Comparator.comparingInt(e -> e.getSalary()));
-        return maxSal;
-    }
-
-    @Override
-    public Optional<Integer> getMinSalary(int departmentId) {
-        Optional<Integer> minSal = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).map(Employee::getSalary).min(Comparator.naturalOrder());
-        return minSal;
-    }
-
-    @Override
-    public List<Employee> printDepartmentEmployee(int departmentId) {
-        List<Employee> all = empMap.values().stream().filter(e -> e.getDepartment() == departmentId).collect(Collectors.toList());
-        return all;
-    }
 
     @Override
     public String deleteEmployee(String lastName, String firstName) {
@@ -67,5 +50,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             return empMap.get(lastName + " " + firstName);
         }
         throw new EmpNotFoundException();
+    }
+
+    @Override
+    public Set<Employee> getEmployees(){
+        return new HashSet<>(empMap.values());
     }
 }
