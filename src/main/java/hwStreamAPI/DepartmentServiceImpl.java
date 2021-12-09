@@ -20,7 +20,6 @@ public class DepartmentServiceImpl implements DepartmentService {
         return employeeService.getEmployees().stream()
                 .filter(e -> e.getDepartment() == departmentId)
                 .max(Comparator.comparingInt(Employee::getSalary));
-
     }
 
     @Override

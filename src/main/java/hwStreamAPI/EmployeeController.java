@@ -22,8 +22,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/remove")
-    public String deleteEmployee(@RequestParam String lastName, @RequestParam String firstName) throws EmpNotFoundException {
-        return "Удалён: " + employeeService.deleteEmployee(lastName, firstName);
+    public Employee deleteEmployee(@RequestParam String lastName, @RequestParam String firstName) {
+        return employeeService.deleteEmployee(lastName, firstName);
     }
 
     @GetMapping("/find")
