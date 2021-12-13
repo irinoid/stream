@@ -1,4 +1,4 @@
-package hwStreamAPI;
+package hw_stream_api;
 
 import org.springframework.stereotype.Service;
 
@@ -30,22 +30,20 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Employee> printDepartmentEmployee(int departmentId) {
+    public List<Employee> getDepartmentEmployee(int departmentId) {
         return employeeService.getEmployees().stream()
                 .filter(e -> e.getDepartment() == departmentId)
                 .sorted(Comparator.comparing(Employee::getLastName)
                         .thenComparing(Employee::getFirstName))
                 .collect(Collectors.toList());
-
     }
 
     @Override
-    public List<Employee> printDepartmentEmployee() {
+    public List<Employee> getDepartmentEmployee() {
         return employeeService.getEmployees().stream()
                 .sorted(Comparator.comparingInt(Employee::getDepartment)
                         .thenComparing(Employee::getLastName)
                         .thenComparing(Employee::getFirstName))
                 .collect(Collectors.toList());
-
     }
 }

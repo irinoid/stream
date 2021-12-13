@@ -1,14 +1,14 @@
-package hwStreamAPI;
+package hw_stream_api;
 
 import java.util.*;
 
 public class EmployeeConstants {
     public static final String FIRST_NAME_ADD = "Федор";
     public static final String LAST_NAME_ADD = "Федоров";
-    public static final String FIRST_NAME_DEL = "Иван";
-    public static final String LAST_NAME_DEL = "Иванов";
-    public static final String FIRST_NAME_FIND = "Петр";
-    public static final String LAST_NAME_FIND = "Петров";
+    public static final String FIRST_NAME_DEL = "Максим";
+    public static final String LAST_NAME_DEL = "Максимов";
+    public static final String FIRST_NAME_FIND = "Семен";
+    public static final String LAST_NAME_FIND = "Семенов";
     public static final int SALARY1 = 100_000;
     public static final int DEPARTMENT_ID1 = 2;
     public static final int DEPARTMENT_ID_INCORRECT = 0;
@@ -22,6 +22,7 @@ public class EmployeeConstants {
     public static final Employee EMPLOYEE_5 = new Employee("Игнатов", "Игнат", 3, 15_000);
 
     public static final Set<Employee> TEST_SET_EMPLOYEE = new HashSet<>(Set.of(EMPLOYEE_1, EMPLOYEE_2, EMPLOYEE_3, EMPLOYEE_4, EMPLOYEE_5));
+    public static final Set<Employee> TEST_EMPTY_SET_EMPLOYEE = new HashSet<>();
     public static final List<Employee> TEST_SORTED_LIST_EMPLOYEE = new ArrayList<>(List.of(EMPLOYEE_3, EMPLOYEE_4, EMPLOYEE_1, EMPLOYEE_2, EMPLOYEE_5));
     public static final List<Employee> TEST_SORTED_DEPART_LIST_EMPLOYEE = new ArrayList<>(List.of(EMPLOYEE_4, EMPLOYEE_1));
 

@@ -1,4 +1,4 @@
-package hwStreamAPI;
+package hw_stream_api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,9 +32,9 @@ public class DepartmentController {
     @GetMapping("/all")
     public List<Employee> printDepartmentEmployee(Integer departmentId) {
         if (departmentId == null) {
-            return departmentService.printDepartmentEmployee();
+            return departmentService.getDepartmentEmployee();
         } else {
-            return departmentService.printDepartmentEmployee(departmentId);
+            return departmentService.getDepartmentEmployee(departmentId);
         }
 
     }

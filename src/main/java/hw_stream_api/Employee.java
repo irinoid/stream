@@ -1,4 +1,4 @@
-package hwStreamAPI;
+package hw_stream_api;
 
 import java.util.Objects;
 
